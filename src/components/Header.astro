@@ -1,0 +1,48 @@
+---
+// Este componente de cabecera incluye la barra de navegación y un menú de hamburguesa para móviles.
+---
+<header class="header">
+    <nav class="container header-nav">
+        <!-- Logo con imagen y texto -->
+        <div class="header-logo">
+            <a href="#inicio" class="logo-link">
+                <img src="logo-codemadi.png" alt="Logo" class="logo-image">
+                Codemadi
+            </a>
+        </div>
+
+        <!-- Icono de hamburguesa para móviles -->
+        <div class="hamburger-menu" id="hamburger-icon">
+            &#9776; <!-- Carácter Unicode para el icono de hamburguesa -->
+        </div>
+
+        <!-- Enlaces de navegación -->
+        <div class="nav-links" id="mobile-menu">
+            <a href="#inicio">Inicio</a>
+            <a href="#sobre-nosotros">Sobre Nosotros</a>
+            <a href="#proyectos">Proyectos</a>
+            <a href="#contacto" id="btn-primary">Contacto</a>
+        </div>
+    </nav>
+</header>
+
+
+<!-- Script para manejar el menú de hamburguesa (se moverá a Layout.astro para centralizar JS) -->
+<!-- Aquí solo es un placeholder para la idea de la interacción -->
+<!-- <script>
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    hamburgerIcon.addEventListener('click', () => {
+        mobileMenu.classList.toggle('is-active');
+    });
+
+    // Ocultar menú al hacer clic en un enlace (en móvil)
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('is-active')) {
+                mobileMenu.classList.remove('is-active');
+            }
+        });
+    });
+</script> -->

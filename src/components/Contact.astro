@@ -1,0 +1,46 @@
+---
+// Este componente de contacto proporciona la sección final para interactuar con los visitantes.
+---
+<!-- Enlace a Font Awesome (pon esto en el <head>) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<section id="contacto" class="contact-section section-padding">
+    
+    <div class="container">
+
+        <h2 class="contact-heading">¡Hablemos de tu <span class="gradient-text">Próximo Éxito Digital</span>!</h2>
+        <p class="contact-description">¿Listo para transformar tu negocio con una estrategia digital sólida? Contáctanos para una consulta personalizada.</p>
+        
+        <div class="contact-links">
+            <a href="mailto:info@tustartup.com" class="email-btn">codemadi.dev@outlook.com</a>
+
+            <a id="whatsapp-link" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>    
+        </div>
+
+        <div class="contact-footer-text">
+            <p>Diseñado con pasión y creatividad para un impacto duradero.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<script>
+    // Armado del número para evitar bots simples
+    const codPais = "521";            // Cambia esto si no estás en México
+    const numero = "5512345678";      // Tu número real sin espacios ni símbolos
+    const mensaje = "Hola, me interesa un proyecto.";
+
+    const url = `https://wa.me/${codPais}${numero}?text=${encodeURIComponent(mensaje)}`;
+
+    document.getElementById("whatsapp-link");
+
+    const link = document.getElementById("whatsapp-link");
+
+    if (link instanceof HTMLAnchorElement) { // Si el elemento con ID "whatsapp-link" existe y es un enlace HTML (<a>), 
+        link.href = url; // entonces cambia su href
+    }
+
+</script>

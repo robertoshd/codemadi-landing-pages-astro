@@ -1,0 +1,54 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+import '../styles/global.css'; // Importa el archivo CSS global
+---
+
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <!-- El CSS global se carga a través de la importación de Astro -->
+</head>
+<body>
+
+    <slot />
+
+    <footer class="main-footer">
+        <div class="container">
+            &copy; 2025 Codemadi. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburgerIcon = document.getElementById('hamburger-icon');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (hamburgerIcon && mobileMenu) {
+                hamburgerIcon.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('is-active');
+                });
+
+                // Ocultar menú al hacer clic en un enlace (en móvil)
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (mobileMenu.classList.contains('is-active')) {
+                            mobileMenu.classList.remove('is-active');
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

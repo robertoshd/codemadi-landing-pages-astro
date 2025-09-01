@@ -1,0 +1,511 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+:root {
+    --color-red: #FF6B6B;
+    --color-yellow: #FFD166;
+    --color-green: #06D6A0;
+    --color-blue: #118AB2;
+    --color-dark-blue: #073B4C;
+    --color-gray-50: #f9fafb;
+    --color-gray-100: #f3f4f6;
+    --color-gray-400: #9ca3af;
+    --color-gray-600: #4b5563;
+    --color-gray-700: #374151;
+    --color-gray-800: #1f2937;
+    --color-white: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--color-gray-50);
+    color: var(--color-gray-800);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+
+}
+
+.container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem; /* px-6 */
+    padding-right: 1.5rem; /* px-6 */
+    animation: fadeInput 2s ease-out;
+}
+
+.section-padding {
+    padding-top: 5rem; /* py-20 */
+    padding-bottom: 5rem; /* py-20 */
+}
+
+/* Header */
+.header {
+    background-color: var(--color-gray-800);; /* Nuevo color de fondo: gris muy claro */
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow-sm */
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.header-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.75rem; /* py-3 */
+    padding-bottom: 0.75rem; /* py-3 */
+    position: relative; /* Para posicionar el menú móvil */
+}
+
+.header-logo {
+    display: flex;
+    align-items: center; /* Alinea verticalmente la imagen y el texto */
+}
+
+.header-logo .logo-link {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem; /* Ajusta el tamaño del texto */
+    font-weight: 600; /* Estilo en negrita */
+    color: var(--color-white);
+    text-decoration: none; /* Elimina el subrayado del enlace */
+}
+
+.header-logo .logo-image {
+    width: 40px; /* Ajusta el tamaño de la imagen */
+    height: 40px; /* Ajusta el tamaño de la imagen */
+    margin-right: 0.5rem; /* Espacio entre la imagen y el texto */
+}
+
+/* Menú de hamburguesa */
+.hamburger-menu {
+    font-size: 2rem;
+    cursor: pointer;
+    display: none; /* Oculto por defecto en desktop */
+    color: var(--color-green); /* Color del icono de hamburguesa */
+    z-index: 100; /* Asegura que el icono esté por encima del menú móvil */
+}
+
+.nav-links {
+    display: flex; /* Por defecto para desktop */
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--color-white); /* Color de los enlaces de navegación */
+    margin-left: 0.5rem; /* mx-2 */
+    margin-right: 0.5rem; /* mx-2 */
+    transition: color 0.3s ease;
+    text-decoration: none;
+    padding: 0.25rem 0.5rem; /* Un poco de padding para los clics */
+}
+
+.nav-links a:hover {
+    color: var(--color-green); /* Puedes ajustar el hover para que contraste bien, por ejemplo, con el azul vibrante */
+}
+
+#btn-primary {
+    background-color: var(--color-red); /* Mantiene el color azul vibrante para el botón de acción */
+    color: var(--color-white);
+    padding: 0.5rem 1rem; /* py-2 px-4 */
+    border-radius: 10px; /* rounded-full */
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+#btn-primary:hover {
+    background-color: #c04242; /* Un hover diferente para el botón */
+}
+
+/* Estilos para móviles (cuando la pantalla es menor a 768px) */
+@media (max-width: 767px) { /* md:hidden */
+    .hamburger-menu {
+        display: block; /* Muestra el icono de hamburguesa */
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%; /* Debajo del header */
+        left: 0;
+        width: 100%;
+        background-color: var(--color-gray-100); /* Fondo del menú móvil también claro */
+        flex-direction: column; /* Apila los enlaces verticalmente */
+        align-items: ce; /* Alinea los elementos a la izquierda */
+        padding: 1rem 1.5rem; /* Espaciado interno */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transform: translateY(-100%); /* Oculta el menú por defecto */
+        opacity: 0;
+        visibility: hidden;
+        transition: transform 0.3s ease-out, opacity 0.3s ease-out, visibility 0.3s ease-out;
+    }
+
+    .nav-links.is-active {
+        transform: translateY(0); /* Muestra el menú */
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-links a {
+        margin: 0.5rem 0; /* Espaciado vertical entre enlaces */
+        width: auto; /* Hace que los enlaces ocupen todo el ancho */
+        text-align: center; /* Alinea el texto a la izquierda */
+        padding: 0.75rem 1.5rem;
+        color: var(--color-dark-blue); /* Asegura que los enlaces sean oscuros en el menú móvil */
+    }
+
+    .nav-links .btn-primary {
+        width: auto;
+        text-align: center;
+        margin-top: 1rem; /* Espacio extra para el botón */
+        padding: 0.75rem 1.5rem;  
+    }
+}
+
+/* Hero Section */
+.hero-section {
+    text-align: center;
+    background-color: var(--color-white);
+    background-image: url('https://vargascorporation.com/images/banner-desarrollo-web.jpg'); /* URL de tu imagen de fondo */
+    background-size: cover; /* Ajusta la imagen para cubrir todo el área */
+    background-position: center 40%; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    position: relative; /* Necesario para el overlay si lo usas */
+    color: var(--color-dark-blue); /* Asegura que el texto sea visible */
+    padding-top: 20rem; /* py-20 */
+    padding-bottom: 20rem; /* py-20 */
+}
+
+/* Opcional: Para mejorar la legibilidad del texto sobre la imagen, puedes añadir un overlay */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Overlay blanco semi-transparente */
+    backdrop-filter: blur(1px);
+    z-index: 1; /* Asegura que el overlay esté debajo del contenido pero encima del fondo */
+}
+
+/* Asegura que el contenido esté por encima del overlay */
+.hero-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-image {
+    border-radius: 9999px; /* rounded-full */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.5rem; /* mb-6 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-lg */
+    width: 200px;
+    height: 200px;
+}
+
+.hero-title {
+    font-size: 3rem; /* text-5xl */
+    font-family: 'Inter', sans-serif;
+    font-weight: 900; /* font-black */
+    margin-bottom: 1rem; /* mb-4 */
+    margin-top: 1rem;
+    line-height: 1.2;
+    color: var(--color-green); /* Asegura que el título sea visible */
+}
+@media (min-width: 768px) {
+    .hero-title {
+        font-size: 3.75rem; /* md:text-6xl */
+    }
+}
+
+.hero-subtitle {
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 600; /* font-semibold */
+    color: var(--color-blue); /* Asegura que el subtítulo sea visible */
+    margin-bottom: 1rem; /* mb-4 */
+}
+@media (min-width: 768px) {
+    .hero-subtitle {
+        font-size: 1.875rem; /* md:text-3xl */
+    }
+}
+
+.hero-description {
+    font-size: 1.125rem; /* text-lg */
+    color: var(--color-gray-100); /* Ajusta el color del texto para visibilidad */
+    max-width: 48rem; /* max-w-3xl */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem; /* mb-8 */
+}
+
+.btn-cta {
+    background-color: var(--color-green);
+    color: var(--color-dark-blue);
+    font-weight: 700;
+    padding: 0.75rem 2rem;
+    border-radius: 9999px;
+    transition: background-color 0.3s ease;
+    font-size: 1.125rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    text-decoration: none;
+}
+
+
+.btn-cta:hover {
+    background-color: #42bb9b;
+}
+
+/* Section Heading */
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem; /* mb-12 */
+}
+.section-header h2 {
+    font-size: 2.25rem; /* text-4xl */
+    font-weight: 700; /* font-bold */
+}
+.section-header p {
+    color: var(--color-gray-600);
+    margin-top: 0.5rem; /* mt-2 */
+}
+
+/* About Us Section */
+.about-card {
+    background-color: var(--color-white);
+    border-radius: 0.75rem; /* rounded-xl */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-lg */
+    padding: 2rem; /* p-8 */
+}
+@media (min-width: 768px) {
+    .about-card {
+        padding: 3rem; /* md:p-12 */
+    }
+}
+
+.about-card p {
+    font-size: 1.125rem; /* text-lg */
+    color: var(--color-gray-700);
+    margin-bottom: 1.5rem; /* mb-6 */
+    line-height: 1.625; /* leading-relaxed */
+}
+
+.skill-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem; /* gap-6 */
+    margin-top: 2rem; /* mt-8 */
+    text-align: center;
+}
+@media (min-width: 640px) {
+    .skill-grid {
+        grid-template-columns: repeat(2, 1fr); /* sm:grid-cols-2 */
+    }
+}
+@media (min-width: 1024px) {
+    .skill-grid {
+        grid-template-columns: repeat(4, 1fr); /* lg:grid-cols-4 */
+    }
+}
+
+.skill-item {
+    background-color: var(--color-gray-100);
+    padding: 1.5rem; /* Mayor padding para la tarjeta */
+    border-radius: 0.65rem; /* rounded-lg */
+    display: flex;
+    flex-direction: column; /* Apila el contenido verticalmente */
+    align-items: center; /* Centra horizontalmente */
+    justify-content: flex-start; /* Alinea el contenido hacia arriba */
+    text-align: center; /* Centra el texto */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra ligera para el efecto de tarjeta */
+}
+.skill-item .skill-icon { /* Estilos para la imagen del icono */
+    width: 200px; /* Tamaño del icono AUMENTADO */
+    height: 200px; /* Tamaño del icono AUMENTADO */
+    margin-bottom: 1rem; /* Espacio debajo del icono */
+    border-radius: 0.65rem;
+}
+.skill-item .skill-title { /* Estilos para el título de la habilidad */
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 600; /* font-semibold */
+    color: var(--color-gray-800);
+    margin-bottom: 0.5rem; /* Espacio debajo del título */
+}
+.skill-item .skill-description { /* Estilos para la descripción de la habilidad */
+    font-size: 0.875rem; /* text-sm */
+    color: var(--color-gray-600);
+    line-height: 1.5;
+}
+
+/* Project Cards */
+.project-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem; /* gap-8 */
+}
+@media (min-width: 768px) {
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr); /* md:grid-cols-2 */
+    }
+}
+@media (min-width: 1024px) {
+    .project-grid {
+        grid-template-columns: repeat(3, 1fr); /* lg:grid-cols-3 */
+    }
+}
+
+.project-card {
+    background-color: var(--color-white);
+    border-radius: 0.75rem; /* rounded-xl */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+.project-card:hover {
+    transform: translateY(-0.5rem); /* translateY(-8px) */
+}
+.project-card-image {
+    width: 100%;
+    height: 12rem; /* h-48 */
+    object-fit: cover;
+}
+.project-card-content {
+    padding: 1.5rem; /* p-6 */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.project-card-title {
+    font-size: 1.25rem; /* text-xl */
+    font-weight: 700; /* font-bold */
+    margin-bottom: 0.5rem; /* mb-2 */
+}
+.project-card-description {
+    color: var(--color-gray-600);
+    font-size: 0.875rem; /* text-sm */
+    margin-bottom: 1rem; /* mb-4 */
+    flex-grow: 1;
+}
+.btn-secondary {
+    background-color: var(--color-blue);
+    color: var(--color-white);
+    padding: 0.5rem 1rem; /* py-2 px-4 */
+    border-radius: 9999px; /* rounded-full */
+    font-size: 0.875rem; /* text-sm */
+    align-self: flex-start;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+.btn-secondary:hover {
+    background-color: var(--color-dark-blue);
+}
+
+/* Contact Section */
+.contact-section {
+    background-color: var(--color-gray-800);
+    color: var(--color-white);
+    text-align: center;
+}
+.contact-section h2 {
+    font-size: 2.25rem; /* text-4xl */
+    font-weight: 700; /* font-bold */
+    margin-bottom: 1rem; /* mb-4 */
+}
+.contact-section p {
+    max-width: 32rem; /* max-w-xl */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem; /* mb-8 */
+    color: var(--color-gray-300);
+}
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem; /* gap-4 */
+}
+@media (min-width: 640px) {
+    .contact-links {
+        flex-direction: row; /* sm:flex-row */
+    }
+}
+.contact-links a {
+    font-weight: 700; /* font-bold */
+    padding: 0.75rem 2rem; /* py-3 px-8 */
+    border-radius: 9999px; /* rounded-full */
+    transition: background-color 0.3s ease;
+    font-size: 1.125rem; /* text-lg */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+.contact-links .email-btn {
+    background-color: var(--color-green);
+    color: var(--color-dark-blue);
+}
+.contact-links .email-btn:hover {
+    background-color: #02a378
+}
+
+.contact-links .whatsapp-btn {
+    background-color: #25D366; /* Un verde vibrante para WhatsApp */
+    color: var(--color-white);
+    /* Estas propiedades ya vienen de .contact-links a, pero puedes sobreescribir si quieres */
+    /* font-weight: 700; */
+    /* padding: 0.75rem 2rem; */
+    /* border-radius: 9999px; */
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+    /* display: inline-flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    /* text-decoration: none; */
+}
+
+.contact-links .whatsapp-btn i { /* Esta regla selecciona el ícono de Font Awesome dentro del botón */
+    margin-right: 0.5rem; /* Ajusta este valor para controlar el espacio */
+}
+
+.contact-links .whatsapp-btn:hover {
+    background-color: #1DA851; /* Un verde más oscuro al pasar el ratón */
+}
+
+.contact-links .whatsapp-btn span:first-child {
+    margin-right: 0.5rem; /* Espacio entre el icono del teléfono y el texto */
+}
+
+.contact-footer-text {
+    margin-top: 3rem; /* mt-12 */
+    font-size: 0.875rem; /* text-sm */
+    color: var(--color-gray-400);
+}
+
+/* Footer */
+.main-footer {
+    background-color: var(--color-dark-blue);
+    color: var(--color-gray-400);
+    padding-top: 1.5rem; /* py-6 */
+    padding-bottom: 1.5rem; /* py-6 */
+    text-align: center;
+    font-size: 0.875rem; /* text-sm */
+}
+
+@keyframes fadeInput {
+  0% {
+
+    opacity: 0; /* Empieza invisible */
+  }
+  100% {
+
+    opacity: 1; /* Se hace visible */
+  }
+}

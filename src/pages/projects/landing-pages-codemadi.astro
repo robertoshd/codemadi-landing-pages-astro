@@ -1,0 +1,237 @@
+---
+import landingPages1 from '../../assets/images/landing-pages-1.png';
+import landingPages2 from '../../assets/images/landing-pages-2.png';
+import landingPages3 from '../../assets/images/landing-pages-3.png';
+import landingPages4 from '../../assets/images/landing-pages-4.png';
+
+const proyecto = {
+  title: "Desarrollo de Landing Pages Personalizada",
+  imagenes: [
+    landingPages1,
+    landingPages2,
+    landingPages3,
+    landingPages4
+  ],
+  description: {
+    contexto: "Una startup Codemadi en etapa temprana, se necesitaba una landing page efectiva para validar su propuesta de valor y captar leads de manera rápida.",
+    solucion: "Se diseño y desarrollo una landing page personalizada, enfocada en conversión y optimización SEO, con un diseño responsivo y mensajes claros alineados con la marca.",
+    ejecucion: "Se trabajo durante 2 semanas, realizando iteraciones rápidas basadas en feedback continuo y pruebas A/B para validar decisiones de contenido y diseño.",
+    resultados: "Landing page lista para lanzamiento. Validada internamente con foco en conversión y experiencia de usuario.",
+    conclusion: "El proyecto cumplió los objetivos iniciales y se convirtió en una pieza clave para la validación temprana de la idea, sirviendo como portafolio digital."
+  }
+};
+--- 
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{proyecto.title}</title>
+    <style>
+      :root {
+        --color-acento: #F1F5F9;
+        --color-fondo: #0F172A;
+        --color-texto: #333;
+        --max-width: 1200px;
+      }
+
+      body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: var(--color-fondo);
+        color: var(--color-texto);
+        overflow-x: hidden;
+      }
+
+      main {
+        padding: 3rem 2rem;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        animation: fadeInPage 0.8s ease both;
+      }
+
+      .btn-back {
+        position: fixed;
+        top: 1rem;
+        left: 1rem;
+        width: 44px;
+        height: 44px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease;
+      }
+
+      .btn-back svg {
+        stroke: var(--color-acento);
+        stroke-width: 2.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+        width: 28px;
+        height: 28px;
+      }
+
+      .btn-back:hover {
+        transform: rotate(90deg) scale(1.1);
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        color: var(--color-acento);
+        border-left: 5px solid var(--color-acento);
+        padding-left: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .contenido {
+        display: grid;
+        grid-template-columns: 2.0fr 1fr; /* galería 2.5 veces más ancha que texto */
+        gap: 2rem;
+        align-items: start;
+      }
+
+      .galeria {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .galeria figure {
+        margin: 0;
+        opacity: 0;
+        animation: fadeInUp 0.6s ease forwards;
+      }
+
+      .galeria figure:nth-child(1) { animation-delay: 0.2s; }
+      .galeria figure:nth-child(2) { animation-delay: 0.4s; }
+      .galeria figure:nth-child(3) { animation-delay: 0.6s; }
+
+      .galeria img {
+        width: 100%;
+        max-width: 800px;
+        border-radius: 12px;
+        object-fit: cover;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .galeria img:hover {
+        transform: scale(1.02);
+      }
+
+      .galeria figcaption {
+        font-size: 0.9rem;
+        text-align: center;
+        color: #ffffff;
+        margin-top: 0.4rem;
+      }
+
+      .descripcion {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        opacity: 0;
+        animation: fadeInUp 0.8s ease 0.8s forwards;
+      }
+
+      .descripcion h2 {
+        color: var(--color-acento);
+        font-size: 1.4rem;
+        margin-bottom: 0.4rem;
+        border-left: 4px solid var(--color-acento);
+        padding-left: 0.6rem;
+      }
+
+      .descripcion p {
+        line-height: 1.6;
+        color: #ffffff;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInPage {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .contenido {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Botón X -->
+    <button 
+      class="btn-back" 
+      aria-label="Volver" 
+      onclick="window.history.back()"
+    >
+      <svg viewBox="0 0 24 24">
+        <line x1="18" y1="6" x2="6" y2="18" />
+        <line x1="6" y1="6" x2="18" y2="18" />
+      </svg>
+    </button>
+
+    <main>
+      <h1>{proyecto.title}</h1>
+
+      <section class="contenido">
+
+        <!-- Galería de imágenes -->
+        <div class="galeria">
+          {proyecto.imagenes.map((img, index) => (
+            <figure>
+              <img src={img.src} alt={`Captura ${index + 1}`} />
+            </figure>
+          ))}
+        </div>
+
+        <!-- Descripción -->
+        <div class="descripcion">
+          <div>
+            <h2>Contexto</h2>
+            <p>{proyecto.description.contexto}</p>
+          </div>
+          <div>
+            <h2>Solución</h2>
+            <p>{proyecto.description.solucion}</p>
+          </div>
+          <div>
+            <h2>Ejecución</h2>
+            <p>{proyecto.description.ejecucion}</p>
+          </div>
+          <div>
+            <h2>Resultados</h2>
+            <p>{proyecto.description.resultados}</p>
+          </div>
+          <div>
+            <h2>Conclusión</h2>
+            <p>{proyecto.description.conclusion}</p>
+          </div>
+        </div>
+
+      </section>
+    </main>
+
+  </body>
+</html>
